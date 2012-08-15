@@ -73,7 +73,7 @@ public class FrameTest {
             });
 
             //create system tray icon.
-            trayIcon = new TrayIcon(dogImage, "Dog App.", null);
+            trayIcon = new TrayIcon(dogImage, "Dog App.", menu);
 
             //add the tray icon to the system tray.
             try {
