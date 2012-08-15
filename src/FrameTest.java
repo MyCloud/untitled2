@@ -5,7 +5,7 @@
 
 import java.awt.*;
 import java.awt.event.*;
-import java.net.URL;
+//import java.net.URL;
 import javax.swing.*;
 
 /**
@@ -73,7 +73,7 @@ public class FrameTest {
             });
 
             //create system tray icon.
-            trayIcon = new TrayIcon(dogImage, "Dog App.", menu);
+            trayIcon = new TrayIcon(dogImage, "Dog App.", null);
 
             //add the tray icon to the system tray.
             try {
