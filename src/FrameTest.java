@@ -44,36 +44,65 @@ public class FrameTest {
             dogImage  = Toolkit.getDefaultToolkit().getImage("images/bulb.gif");
 
             //create popupmenu
-            menu = new PopupMenu();
+            //menu = new PopupMenu();
 
             //create item
-            item1 = new MenuItem("Exit");
-            item2 = new MenuItem("Show app");
+            //item1 = new MenuItem("Exit");
+            //item2 = new MenuItem("Show app");
 
             //add item to menu
-            menu.add(item1);
+            //menu.add(item1);
 
 
 
             //add action listener to the item in the popup menu
-            item1.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    System.exit(0);
-                }
-            });
+            //item1.addActionListener(new ActionListener() {
+            //    public void actionPerformed(ActionEvent e) {
+            //        System.exit(0);
+            //    }
+            //});
 
             //add second item to popup menu
-            menu.add(item2);
+            //menu.add(item2);
 
-            item2.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    frame.setVisible(true);
+            //item2.addActionListener(new ActionListener() {
+            //    public void actionPerformed(ActionEvent e) {
+            //        frame.setVisible(true);
 
-                }
-            });
+             //   }
+            //});
 
             //create system tray icon.
-            trayIcon = new TrayIcon(dogImage, "Dog App.", menu);
+            trayIcon = new TrayIcon(dogImage, "Dog App.", null);
+
+            final JPopupMenu jpopup = new JPopupMenu();
+
+            JMenuItem javaCupMI = new JMenuItem("Example", new ImageIcon("JavaCup16.gif"));
+            jpopup.add(javaCupMI);
+
+            jpopup.addSeparator();
+
+            JMenuItem exitMI = new JMenuItem("Exit");
+            jpopup.add(exitMI);
+
+            //trayIcon.addMouseListener(new MouseAdapter() {
+            //    public void mouseReleased(MouseEvent e) {
+            //        if (e.isPopupTrigger()) {
+            //            jpopup.setLocation(e.getX(), e.getY());
+            //            jpopup.setInvoker(jpopup);
+             //           jpopup.setVisible(true);
+             //       }
+            //    }
+            //});
+            trayIcon.addMouseListener(new MouseAdapter() {
+                public void mouseEntered(MouseEvent e) {
+                    if (e.isPopupTrigger()) {
+                        jpopup.setLocation(e.getX(), e.getY());
+                        jpopup.setInvoker(jpopup);
+                        jpopup.setVisible(true);
+                    }
+                }
+            });
 
             //add the tray icon to the system tray.
             try {
@@ -90,7 +119,8 @@ public class FrameTest {
         SwingUtilities.invokeLater(new Runnable(){
             public void run() {
                 new FrameTest().frame.setVisible(true);
-//                new FrameTest();
+                //new FrameTest();
+
             }
         });
     }//end main()
